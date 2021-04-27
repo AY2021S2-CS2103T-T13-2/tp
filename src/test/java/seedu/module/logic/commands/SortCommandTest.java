@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static seedu.module.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.module.testutil.TypicalTasks.getSortedTypicalModuleBookByDeadline;
 import static seedu.module.testutil.TypicalTasks.getSortedTypicalModuleBookByDescription;
+import static seedu.module.testutil.TypicalTasks.getSortedTypicalModuleBookByDoneStatus;
 import static seedu.module.testutil.TypicalTasks.getSortedTypicalModuleBookByModule;
 import static seedu.module.testutil.TypicalTasks.getSortedTypicalModuleBookByName;
 import static seedu.module.testutil.TypicalTasks.getSortedTypicalModuleBookByTag;
@@ -28,6 +29,7 @@ class SortCommandTest {
     private Model nameSortedModel;
     private Model descriptionSortedModel;
     private Model tagSortedModel;
+    private Model doneStatusSortedModel;
 
     private SortCommand tagSortCommand = new SortCommand(new Task.TagComparator());
     private SortCommand nameSortCommand = new SortCommand(new Task.NameComparator());
@@ -35,6 +37,7 @@ class SortCommandTest {
     private SortCommand descriptionSortCommand = new SortCommand(new Task.DescriptionComparator());
     private SortCommand moduleSortCommand = new SortCommand(new Task.ModuleComparator());
     private SortCommand workloadSortCommand = new SortCommand(new Task.WorkloadComparator());
+    private SortCommand doneStatusSortCommand = new SortCommand(new Task.DoneStatusComparator());
 
     @BeforeEach
     public void setUp() {
@@ -45,6 +48,7 @@ class SortCommandTest {
         nameSortedModel = new ModelManager(getSortedTypicalModuleBookByName(), new UserPrefs());
         descriptionSortedModel = new ModelManager(getSortedTypicalModuleBookByDescription(), new UserPrefs());
         tagSortedModel = new ModelManager(getSortedTypicalModuleBookByTag(), new UserPrefs());
+        doneStatusSortedModel = new ModelManager(getSortedTypicalModuleBookByDoneStatus(), new UserPrefs());
     }
 
     @Test
@@ -120,6 +124,18 @@ class SortCommandTest {
     }
 
     @Test
+    public void execute_sortedTaskByDoneStatus_showsSameList() {
+        assertCommandSuccess(new SortCommand(new Task.DoneStatusComparator()), doneStatusSortedModel,
+                "Sorted all tasks by done status.", doneStatusSortedModel);
+    }
+
+    @Test
+    public void execute_sortedTaskByDoneStatus_showsSortedList() {
+        assertCommandSuccess(new SortCommand(new Task.DoneStatusComparator()), model,
+                "Sorted all tasks by done status.", doneStatusSortedModel);
+    }
+
+    @Test
     public void equals() {
         assertEquals(tagSortCommand, tagSortCommand);
 
@@ -135,6 +151,8 @@ class SortCommandTest {
 
         assertEquals(workloadSortCommand, new SortCommand(new Task.WorkloadComparator()));
 
+        assertEquals(doneStatusSortCommand, new SortCommand(new Task.DoneStatusComparator()));
+
         assertNotEquals(tagSortCommand, "Not a SortCommand");
 
         assertNotEquals(nameSortCommand, new SortCommand(new Task.TagComparator()));
@@ -147,6 +165,8 @@ class SortCommandTest {
 
         assertNotEquals(nameSortCommand, new SortCommand(new Task.WorkloadComparator()));
 
+        assertNotEquals(nameSortCommand, new SortCommand(new Task.DoneStatusComparator()));
+
         assertNotEquals(tagSortCommand, new SortCommand(new Task.DeadlineComparator()));
 
         assertNotEquals(tagSortCommand, new SortCommand(new Task.DescriptionComparator()));
@@ -155,19 +175,29 @@ class SortCommandTest {
 
         assertNotEquals(tagSortCommand, new SortCommand(new Task.WorkloadComparator()));
 
+        assertNotEquals(tagSortCommand, new SortCommand(new Task.DoneStatusComparator()));
+
         assertNotEquals(deadlineSortCommand, new SortCommand(new Task.DescriptionComparator()));
 
         assertNotEquals(deadlineSortCommand, new SortCommand(new Task.ModuleComparator()));
 
         assertNotEquals(deadlineSortCommand, new SortCommand(new Task.WorkloadComparator()));
 
+        assertNotEquals(deadlineSortCommand, new SortCommand(new Task.DoneStatusComparator()));
+
         assertNotEquals(descriptionSortCommand, new SortCommand(new Task.ModuleComparator()));
 
         assertNotEquals(descriptionSortCommand, new SortCommand(new Task.WorkloadComparator()));
 
+        assertNotEquals(descriptionSortCommand, new SortCommand(new Task.DoneStatusComparator()));
+
         assertNotEquals(moduleSortCommand, new SortCommand(new Task.WorkloadComparator()));
 
+        assertNotEquals(moduleSortCommand, new SortCommand(new Task.DoneStatusComparator()));
+
         assertNotEquals(workloadSortCommand, new SortCommand(new Task.TagComparator()));
+
+        assertNotEquals(workloadSortCommand, new SortCommand(new Task.DoneStatusComparator()));
 
     }
 

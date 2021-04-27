@@ -3,6 +3,7 @@ package seedu.module.logic.parser;
 import static seedu.module.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.module.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.module.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.module.logic.parser.CliSyntax.PREFIX_DONE_STATUS;
 import static seedu.module.logic.parser.CliSyntax.PREFIX_MODULE;
 import static seedu.module.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.module.logic.parser.CliSyntax.PREFIX_TASK_NAME;
@@ -23,6 +24,7 @@ public class SortCommandParserTest {
     private static final String VALID_WORKLOAD_INPUT = " " + PREFIX_WORKLOAD.getPrefix();
     private static final String VALID_TAG_INPUT = " " + PREFIX_TAG.getPrefix();
     private static final String VALID_TASK_NAME_INPUT = " " + PREFIX_TASK_NAME.getPrefix();
+    private static final String VALID_DONE_STATUS_INPUT = " " + PREFIX_DONE_STATUS.getPrefix();
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE);
 
@@ -45,8 +47,6 @@ public class SortCommandParserTest {
 
         // use full name
         assertParseFailure(parser, "deadline/", MESSAGE_INVALID_FORMAT);
-
-
 
     }
 
@@ -72,7 +72,9 @@ public class SortCommandParserTest {
 
         // task name prefix
         assertParseSuccess(parser, VALID_TASK_NAME_INPUT, new SortCommand(new Task.NameComparator()));
-    }
 
+        // done status prefix
+        assertParseSuccess(parser, VALID_DONE_STATUS_INPUT, new SortCommand(new Task.DoneStatusComparator()));
+    }
 
 }

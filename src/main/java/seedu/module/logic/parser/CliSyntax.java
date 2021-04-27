@@ -14,6 +14,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_WORKLOAD = new Prefix("w/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
     public static final Prefix PREFIX_RECURRENCE = new Prefix("r/");
+    public static final Prefix PREFIX_DONE_STATUS = new Prefix("s/");
 
 
 }

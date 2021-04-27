@@ -205,6 +205,21 @@ public class TypicalTasks {
         return mb;
     }
 
+    /**
+     * Returns an {@code ModuleBook} with all the typical tasks sorted by done status.
+     */
+    public static ModuleBook getSortedTypicalModuleBookByDoneStatus() {
+        ModuleBook mb = new ModuleBook();
+        mb.addTask(QUIZ); // Not Done
+        mb.addTask(MIDTERM); // Not Done
+        mb.addTask(TUTORIAL); // Not Done
+        mb.addTask(PROJECT); // Not Done
+        mb.addTask(OP); // Not Done
+        mb.addTask(TP); // Done
+        mb.addTask(PAQ); // Done
+        return mb;
+    }
+
     public static List<Task> getTypicalTasks() {
         return new ArrayList<>(Arrays.asList(QUIZ, MIDTERM, TP, TUTORIAL, PROJECT, PAQ, OP));
     }

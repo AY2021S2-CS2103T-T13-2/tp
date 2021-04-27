@@ -39,6 +39,8 @@ public class ParserUtilTest {
     private static final String VALID_TAG_1 = "priorityHigh";
     private static final String VALID_TAG_2 = "workloadMedian";
 
+    private static final String UNSUPPORTED_MODULE = "CS1010M"; //Valid format, but non-existent
+
     private static final String WHITESPACE = " \t\r\n";
 
     @Test
@@ -138,6 +140,11 @@ public class ParserUtilTest {
     @Test
     public void parseModule_invalidValue_throwsParseException() {
         assertThrows(ParseException.class, () -> ParserUtil.parseModule(INVALID_MODULE));
+    }
+
+    @Test
+    public void parseModule_unsupportedModule_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseModule(UNSUPPORTED_MODULE));
     }
 
     @Test

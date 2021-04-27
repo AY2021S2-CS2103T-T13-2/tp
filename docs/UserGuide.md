@@ -532,7 +532,7 @@ Sorts the list of all tasks by one attribute of the tasks. If no prefix is suppl
 
 Application: Used to group and prioritise tasks based on a certain criteria.
 
-Format:  `sort` or `sort n/` or `sort d/` or `sort m/` or `sort w/` or `sort b/` or `sort t/` 
+Format:  `sort` or `sort n/` or `sort d/` or `sort m/` or `sort w/` or `sort b/` or `sort t/` or `sort s/`
 
 *  `sort n/` Sorts the tasks by name alphabetically in ascending order.
 *  `sort d/` Sorts the tasks by the length of description in descending order.
@@ -540,6 +540,7 @@ Format:  `sort` or `sort n/` or `sort d/` or `sort m/` or `sort w/` or `sort b/`
 *  `sort` or `sort b/` Sorts the tasks by deadline so that a task with a closer deadline appears towards the top of the list.
 *  `sort m/` Sorts the tasks by module code alphabetically in descending order.
 *  `sort t/` Sorts the tasks by number of tags in descending order.
+*  `sort s/` Sorts the tasks by done status. Done tasks are pushed towards the end of the list.
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tutorial Example:<br>**
 `sort n/`
@@ -683,5 +684,5 @@ Action | Format, Examples
 **edit** | `edit INDEX [d/DESCRIPTION] [b/DEADLINE]…​`<br> e.g. `edit 2 d/Finish User Guide b/2021-03-21 10:10`
 **recur** | `recur INDEX r/RECURRENCE`<br> e.g. `recur 1 r/biweekly`
 **refresh** | `refresh`
-**sort** | `sort` or `sort n/` or `sort d/` or `sort m/` or `sort w/` or `sort b/` or `sort t/` <br> e.g. `sort b/`
+**sort** | `sort` or `sort n/` or `sort d/` or `sort m/` or `sort w/` or `sort b/` or `sort t/` or `sort s/`<br> e.g. `sort b/`
 **exit** | `exit`

@@ -50,4 +50,17 @@ public class DoneStatusTest {
         //EP: Different object types
         assertFalse(firstDoneStatus.equals(somethingElse));
     }
+
+    @Test
+    public void compareTo() {
+        DoneStatus trueDoneStatus = new DoneStatus(true);
+        assertTrue(trueDoneStatus.compareTo(trueDoneStatus) == 0);
+
+        DoneStatus otherTrueDoneStatus = new DoneStatus(true);
+        assertTrue(trueDoneStatus.compareTo(otherTrueDoneStatus) == 0);
+
+        DoneStatus falseDoneStatus = new DoneStatus(false);
+        assertTrue(trueDoneStatus.compareTo(falseDoneStatus) > 0);
+        assertTrue(falseDoneStatus.compareTo(trueDoneStatus) < 0);
+    }
 }

@@ -3,7 +3,7 @@ package seedu.module.model.task;
 import static java.util.Objects.requireNonNull;
 import static seedu.module.commons.util.AppUtil.checkArgument;
 
-public class DoneStatus {
+public class DoneStatus implements Comparable<DoneStatus> {
     public static final String MESSAGE_CONSTRAINTS = "Boolean strings should be 'true' or 'false'";
 
     public final Boolean isDone;
@@ -80,5 +80,10 @@ public class DoneStatus {
     @Override
     public int hashCode() {
         return isDone.hashCode();
+    }
+
+    @Override
+    public int compareTo(DoneStatus doneStatus) {
+        return this.getIsDone().compareTo(doneStatus.getIsDone());
     }
 }
