@@ -9,7 +9,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ### Tay Yi Hsuen
 
-<img src="images/yhtminceraft1010x.png" width="200px">
+<img src="images/johndoe.png" width="200px">
 
 [[github](https://github.com/yhtMinceraft1010X)]
 [[portfolio](team/yhtminceraft1010x.md)]

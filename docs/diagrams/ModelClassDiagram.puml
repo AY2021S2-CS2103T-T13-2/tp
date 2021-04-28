@@ -6,6 +6,7 @@ skinparam classBackgroundColor MODEL_COLOR
 
 Package Model <<Rectangle>>{
 Interface ReadOnlyModuleBook <<Interface>>
+Interface ReadOnlyUserPrefs <<Interface>>
 Interface Model <<Interface>>
 Interface ObservableList <<Interface>>
 Class ModuleBook
